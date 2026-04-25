@@ -16,7 +16,7 @@ import ScrollToTop from './components/ScrollToTop';
 // Admin Protection Logic
 const AdminRoute = ({ children }) => {
   const { user } = useAuth();
-  const adminEmail = "import.meta.env.VITE_ADMIN_EMAIL";
+  const adminEmail = import.meta.env.VITE_ADMIN_EMAIL;
   return (user && user.email === adminEmail) ? children : <Navigate to="/" />;
 };
 

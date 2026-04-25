@@ -10,7 +10,7 @@ export default function ProductCard({ item }) {
     const { addToCart } = useCart();
     const navigate = useNavigate();
 
-    const ADMIN_EMAIL = "import.meta.env.VITE_ADMIN_EMAIL";
+    const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
     const isAdmin = user && user.email === ADMIN_EMAIL;
 
     const handleDelete = async (e) => {
