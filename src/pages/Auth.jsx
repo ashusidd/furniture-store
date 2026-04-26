@@ -114,7 +114,7 @@ export default function Auth() {
                             <label className="text-[10px] font-black uppercase text-slate-500 ml-4">Full Name</label>
                             <input
                                 type="text"
-                                placeholder="Ashraf Ali"
+                                placeholder="Name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 className="w-full p-5 bg-slate-800 rounded-2xl outline-none font-bold text-sm focus:ring-2 ring-orange-500 transition-all text-white shadow-inner"
@@ -128,7 +128,7 @@ export default function Auth() {
                         <label className="text-[10px] font-black uppercase text-slate-500 ml-4">Email Address</label>
                         <input
                             type="email"
-                            placeholder="example@gmail.com"
+                            placeholder="@gmail.com"
                             value={email}
                             onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
                             className={`w-full p-5 bg-slate-800 rounded-2xl outline-none font-bold text-sm transition-all text-white shadow-inner border-2 ${emailError ? "border-orange-500 ring-2 ring-orange-500/20" : "border-transparent focus:ring-2 ring-orange-500"}`}
@@ -171,7 +171,7 @@ export default function Auth() {
 
                 <div className="mt-10 pt-8 border-t border-slate-800 text-center">
                     <p className="font-bold text-slate-500 text-sm">
-                        {isLogin ? "Naye ho yahan?" : "Pehle se account hai?"}
+                        {isLogin ? "New Here?" : "already have account?"}
                         <button
                             type="button"
                             onClick={() => {

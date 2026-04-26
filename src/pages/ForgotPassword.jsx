@@ -12,14 +12,14 @@ export default function ForgotPassword() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!email) return toast.error("Bhai, email toh daalo! 📧");
+        if (!email) return toast.error("Bhai, email toh daalo! ");
 
         setLoading(true);
         const toastId = toast.loading("Sending reset link...");
 
         try {
             await resetPassword(email);
-            toast.success("Password reset link aapke email pe bhej diya hai! 📩", { id: toastId });
+            toast.success("Password reset link aapke email pe bhej diya hai!", { id: toastId });
 
             // Link bhejne ke baad user ko login pe wapas bhej do
             setTimeout(() => navigate('/login'), 3000);

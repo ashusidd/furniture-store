@@ -13,7 +13,7 @@ export default function Admin() {
     const [desc, setDesc] = useState("");
     const [category, setCategory] = useState("Living Room");
 
-    // 📸 Image States
+    // Image States
     const [mainImageFile, setMainImageFile] = useState(null);
     const [galleryFiles, setGalleryFiles] = useState([]);
     const [existingMain, setExistingMain] = useState("");
@@ -34,7 +34,7 @@ export default function Admin() {
         }
     }, [editMode, state]);
 
-    // ✅ FIXED: Cloudinary Logic (Quotes removed, Backticks added)
+    // FIXED: Cloudinary Logic (Quotes removed, Backticks added)
     const uploadToCloudinary = async (file) => {
         const formData = new FormData();
         formData.append("file", file);
@@ -88,12 +88,12 @@ export default function Admin() {
 
             if (editMode) {
                 await updateDoc(doc(db, "furniture", state.product.id), productData);
-                toast.success("Updated Successfully! 🔄", { id: toastId });
+                toast.success("Updated Successfully!", { id: toastId });
             } else {
                 if (!mainImageFile) throw new Error("Main Image is required!");
                 productData.createdAt = serverTimestamp();
                 await addDoc(collection(db, "furniture"), productData);
-                toast.success("Product Added Successfully! 🚀", { id: toastId });
+                toast.success("Product Added Successfully!", { id: toastId });
             }
             navigate('/');
         } catch (err) {
@@ -114,11 +114,11 @@ export default function Admin() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1">
                         <label className="text-[10px] font-black uppercase text-slate-400 ml-4">Product Name</label>
-                        <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="E.g. Velvet Sofa" className="w-full p-4 bg-slate-50 rounded-2xl outline-none font-bold focus:ring-2 ring-orange-100" required />
+                        <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Product Name" className="w-full p-4 bg-slate-50 rounded-2xl outline-none font-bold focus:ring-2 ring-orange-100" required />
                     </div>
                     <div className="space-y-1">
                         <label className="text-[10px] font-black uppercase text-slate-400 ml-4">Price (₹)</label>
-                        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="9999" className="w-full p-4 bg-slate-50 rounded-2xl outline-none font-bold focus:ring-2 ring-orange-100" required />
+                        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="" className="w-full p-4 bg-slate-50 rounded-2xl outline-none font-bold focus:ring-2 ring-orange-100" required />
                     </div>
                 </div>
 
@@ -130,11 +130,11 @@ export default function Admin() {
                         className="w-full p-4 bg-slate-50 rounded-2xl outline-none font-bold text-slate-700 cursor-pointer"
                         required
                     >
-                        <option value="Living Room">Living Room 🛋️</option>
-                        <option value="Bedroom">Bedroom 🛏️</option>
-                        <option value="Dining">Dining 🍽️</option>
-                        <option value="Office">Office 💼</option>
-                        <option value="Best Selling">Best Selling 🔥</option>
+                        <option value="Living Room">Living Room </option>
+                        <option value="Bedroom">Bedroom </option>
+                        <option value="Dining">Dining </option>
+                        <option value="Office">Office </option>
+                        <option value="Best Selling">Best Selling </option>
                     </select>
                 </div>
 
@@ -160,7 +160,7 @@ export default function Admin() {
                 </div>
 
                 <button disabled={loading} className="w-full bg-slate-900 text-white py-5 rounded-[2rem] font-black text-xl hover:bg-orange-600 transition-all shadow-xl active:scale-95 disabled:opacity-50">
-                    {loading ? "SAVING..." : (editMode ? "UPDATE PRODUCT 🔄" : "LAUNCH PRODUCT 🚀")}
+                    {loading ? "SAVING..." : (editMode ? "UPDATE PRODUCT " : "LAUNCH PRODUCT ")}
                 </button>
             </form>
         </div>
