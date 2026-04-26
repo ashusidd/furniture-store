@@ -19,7 +19,7 @@ export default function ProductCard({ item }) {
         if (window.confirm("Bhai, kya sach mein delete kar dein?")) {
             try {
                 await deleteDoc(doc(db, "furniture", item.id));
-                toast.success("Product Deleted! 🗑️");
+                toast.success("Product Deleted!");
             } catch (err) {
                 toast.error("Delete nahi ho paya!");
             }
@@ -33,7 +33,7 @@ export default function ProductCard({ item }) {
             onClick={() => navigate(`/product/${item.id}`)}
             className="bg-white p-2 md:p-5 rounded-[1.5rem] md:rounded-[3rem] shadow-sm border border-slate-100 group hover:shadow-2xl transition-all cursor-pointer relative overflow-hidden flex flex-col w-full h-full"
         >
-            {/* 🖼️ Image Container */}
+            {/*Image Container */}
             <div className="w-full h-44 md:h-72 overflow-hidden rounded-[1.2rem] md:rounded-[2.5rem] mb-3 relative bg-slate-50">
                 <img
                     src={displayImage}
@@ -41,7 +41,7 @@ export default function ProductCard({ item }) {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
 
-                {/* ✅ FIXED: Admin Controls (Hamesha dikhenge, Mobile friendly) */}
+                {/*FIXED: Admin Controls (Hamesha dikhenge, Mobile friendly) */}
                 {isAdmin && (
                     <div className="absolute top-2 right-2 flex gap-2 z-20">
                         <button
@@ -58,13 +58,13 @@ export default function ProductCard({ item }) {
                             onClick={handleDelete}
                             className="bg-white/95 backdrop-blur-sm p-2 md:p-2.5 rounded-full text-red-600 shadow-xl border border-red-100 active:scale-90 transition-all"
                         >
-                            <span className="text-sm md:text-base">🗑️</span>
+                            <span className="text-sm md:text-base">X</span>
                         </button>
                     </div>
                 )}
             </div>
 
-            {/* 📝 Content Area */}
+            {/* Content Area */}
             <div className="flex flex-col flex-grow px-1">
                 <div className="flex justify-between items-center mb-1">
                     <span className="text-[8px] md:text-[10px] font-black uppercase text-orange-600 tracking-tighter bg-orange-50 px-2 py-0.5 rounded-md">

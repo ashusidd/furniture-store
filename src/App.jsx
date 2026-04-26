@@ -8,7 +8,7 @@ import Checkout from './pages/Checkout';
 import ProductView from './pages/ProductView';
 import MyOrders from './pages/MyOrders';
 import AdminOrders from './pages/AdminOrders';
-import ForgotPassword from './pages/ForgotPassword'; // 👈 Naya Page Import kiya
+import ForgotPassword from './pages/ForgotPassword';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -27,15 +27,15 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#FDFBF7] flex flex-col font-sans">
 
-      {/* 🚀 Page Change par screen ko top pe bhejega */}
+      {/* Page Change par screen ko top pe bhejega */}
       <ScrollToTop />
 
-      {/* 🧭 Navbar */}
+      {/* Navbar */}
       <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
       <main className="flex-1">
         <Routes>
-          {/* ✅ Home Page */}
+          {/* Home Page */}
           <Route path="/" element={
             <Home
               searchTerm={searchTerm}
@@ -46,7 +46,7 @@ export default function App() {
 
           <Route path="/login" element={<Auth />} />
 
-          {/* ✅ Forgot Password Route (Fix) */}
+          {/* Forgot Password Route (Fix) */}
           <Route path="/forgot-password" element={<ForgotPassword />} />
 
           <Route path="/checkout" element={<Checkout />} />
@@ -70,7 +70,7 @@ export default function App() {
         </Routes>
       </main>
 
-      {/* 🛋️ Footer */}
+      {/*Footer */}
       <Footer setSelectedCategory={setSelectedCategory} />
 
     </div>
