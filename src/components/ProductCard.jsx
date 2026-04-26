@@ -15,7 +15,7 @@ export default function ProductCard({ item }) {
     const isAdmin = user && user.email === ADMIN_EMAIL;
 
     const handleDelete = async (e) => {
-        e.stopPropagation(); // Card click event ko rokne ke liye
+        e.stopPropagation();
         if (window.confirm("Bhai, kya sach mein delete kar dein?")) {
             try {
                 await deleteDoc(doc(db, "furniture", item.id));

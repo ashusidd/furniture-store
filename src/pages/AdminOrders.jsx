@@ -17,7 +17,7 @@ export default function AdminOrders() {
         return () => unsubscribe();
     }, []);
 
-    // ✅ Order Confirm Logic (Pending -> Confirmed)
+    // Order Confirm Logic (Pending -> Confirmed)
     const handleConfirm = async (orderId) => {
         const dateValue = dates[orderId];
         if (!dateValue) return toast.error("Bhai, date toh daal do!");
@@ -27,18 +27,18 @@ export default function AdminOrders() {
                 deliveryDate: dateValue,
                 status: "Confirmed"
             });
-            toast.success("Order Confirm ho gaya! 🔥");
+            toast.success("Order Confirm ho gaya!");
         } catch (err) { toast.error("Fail ho gaya!"); }
     };
 
-    // ✅ Order Delivered Logic (Confirmed -> Delivered)
+    //Order Delivered Logic (Confirmed -> Delivered)
     const handleDelivered = async (orderId) => {
         try {
             await updateDoc(doc(db, "orders", orderId), {
                 status: "Delivered",
-                deliveryDate: "Successfully Delivered! ✅"
+                deliveryDate: "Successfully Delivered!"
             });
-            toast.success("Mubarak ho! Order deliver ho gaya. 🛋️✨");
+            toast.success("Mubarak ho! Order deliver ho gaya.");
         } catch (err) { toast.error("Update fail hua!"); }
     };
 
@@ -51,17 +51,17 @@ export default function AdminOrders() {
             <div className="grid gap-10">
                 {orders.map(order => (
                     <div key={order.id} className={`bg-white rounded-[3.5rem] shadow-2xl overflow-hidden border-2 transition-all ${order.status === "Pending" ? "border-orange-500 scale-100" :
-                            order.status === "Delivered" ? "border-green-500 opacity-90 scale-[0.98]" : "border-transparent"
+                        order.status === "Delivered" ? "border-green-500 opacity-90 scale-[0.98]" : "border-transparent"
                         }`}>
 
-                        {/* 🟦 Customer Details Header */}
+                        {/*Customer Details Header */}
                         <div className={`p-8 flex flex-col md:flex-row justify-between gap-6 ${order.status === 'Pending' ? 'bg-orange-50' :
-                                order.status === 'Delivered' ? 'bg-green-50' : 'bg-blue-50'
+                            order.status === 'Delivered' ? 'bg-green-50' : 'bg-blue-50'
                             }`}>
                             <div className="space-y-2">
                                 <div className="flex items-center gap-3">
                                     <span className={`px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${order.status === 'Pending' ? 'bg-orange-600 text-white animate-pulse' :
-                                            order.status === 'Delivered' ? 'bg-green-600 text-white' : 'bg-blue-600 text-white'
+                                        order.status === 'Delivered' ? 'bg-green-600 text-white' : 'bg-blue-600 text-white'
                                         }`}>
                                         {order.status}
                                     </span>
@@ -78,7 +78,7 @@ export default function AdminOrders() {
                             </div>
                         </div>
 
-                        {/* 📦 Order Items List */}
+                        {/*Order Items List */}
                         <div className="p-8 border-t border-slate-50">
                             <div className="flex gap-4 flex-wrap">
                                 {order.items?.map((item, idx) => (
@@ -90,7 +90,7 @@ export default function AdminOrders() {
                             </div>
                         </div>
 
-                        {/* 🛠️ Action Panel (Yahi logic hai Delivered ka) */}
+                        {/* Action Panel (Yahi logic hai Delivered ka) */}
                         <div className="p-8 bg-slate-900 text-white">
                             {order.status === "Pending" ? (
                                 /* Mode 1: Confirming the Order */
@@ -122,14 +122,14 @@ export default function AdminOrders() {
                                         onClick={() => handleDelivered(order.id)}
                                         className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-2xl font-black shadow-xl shadow-green-900/40 transition-all active:scale-95"
                                     >
-                                        MARK AS DELIVERED ✅
+                                        MARK AS DELIVERED
                                     </button>
                                 </div>
                             ) : (
                                 /* Mode 3: Order Completed or Cancelled */
                                 <div className={`p-4 rounded-2xl border text-center w-full ${order.status === 'Cancelled' ? 'bg-red-900/20 border-red-800' : 'bg-green-900/20 border-green-800'}`}>
                                     <p className={`font-black tracking-widest uppercase ${order.status === 'Cancelled' ? 'text-red-400' : 'text-green-400'}`}>
-                                        {order.status === 'Cancelled' ? '🚫 Order Cancelled' : '✨ Order Successfully Delivered ✨'}
+                                        {order.status === 'Cancelled' ? 'Order Cancelled' : 'Order Successfully Delivered'}
                                     </p>
                                 </div>
                             )}

@@ -33,8 +33,6 @@ export default function Admin() {
             setExistingGallery(p.subImages || []);
         }
     }, [editMode, state]);
-
-    // FIXED: Cloudinary Logic (Quotes removed, Backticks added)
     const uploadToCloudinary = async (file) => {
         const formData = new FormData();
         formData.append("file", file);

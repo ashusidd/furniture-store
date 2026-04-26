@@ -40,7 +40,7 @@ export default function MyOrders() {
                             <span className={`px-4 py-1 rounded-full text-[10px] font-black uppercase ${order.status === 'Cancelled' ? 'bg-red-100 text-red-600' : 'bg-orange-100 text-orange-600'
                                 }`}>{order.status}</span>
 
-                            {/* ❌ Sirf User ko Cancel ka option */}
+                            {/*Sirf User ko Cancel ka option */}
                             {order.status === "Pending" && (
                                 <button onClick={() => handleCancelOrder(order.id)} className="text-red-500 text-xs font-bold underline">Cancel Order</button>
                             )}

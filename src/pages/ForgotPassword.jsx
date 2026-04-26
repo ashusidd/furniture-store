@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 export default function ForgotPassword() {
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
-    const { resetPassword } = useAuth(); // Check karo aapke context mein ye function hai ya nahi
+    const { resetPassword } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -65,7 +65,7 @@ export default function ForgotPassword() {
                         type="submit"
                         className="w-full bg-slate-900 text-white py-5 rounded-2xl font-black text-lg hover:bg-orange-600 transition-all shadow-xl active:scale-95 uppercase tracking-widest disabled:opacity-50"
                     >
-                        {loading ? "SENDING..." : "RESET PASSWORD 🚀"}
+                        {loading ? "SENDING..." : "RESET PASSWORD"}
                     </button>
                 </form>
 

@@ -14,10 +14,6 @@ export default function Footer({ setSelectedCategory }) {
             <div className="absolute top-0 right-0 w-64 h-64 bg-orange-600/10 blur-[100px] -z-10"></div>
 
             <div className="max-w-7xl mx-auto px-6 lg:px-10">
-                {/* 🛠️ GRID FIX: 
-                   Mobile pe 2 columns (grid-cols-2) 
-                   Desktop pe 4 columns (lg:grid-cols-4) 
-                */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 mb-16">
 
                     {/* 1. BRAND (Full Width on Mobile for better look) */}

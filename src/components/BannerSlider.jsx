@@ -24,7 +24,6 @@ const banners = [
     },
     {
         id: 4,
-        // ✅ Nayi Dining Image (Working Link)
         image: "https://s3.ap-south-1.amazonaws.com/images.woodenstreet.de/image/data/blog-images/dining-room-decor-ideas/dining-room-decor-ideas.png?q=80&w=2070&auto=format&fit=crop",
         title: "Dining",
         category: "Dining",
@@ -36,7 +35,7 @@ export default function BannerSlider({ onCategorySelect }) {
     const [current, setCurrent] = useState(0);
     const [touchStart, setTouchStart] = useState(null);
 
-    // ⚡ Fast Slide: 2 seconds for quick look
+    // Fast Slide: 2 seconds for quick look
     useEffect(() => {
         const timer = setInterval(() => {
             nextSlide();
@@ -52,7 +51,7 @@ export default function BannerSlider({ onCategorySelect }) {
         setCurrent((prev) => (prev === 0 ? banners.length - 1 : prev - 1));
     };
 
-    // 🖐️ Swipe Logic
+    // Swipe Logic
     const handleTouchStart = (e) => setTouchStart(e.targetTouches[0].clientX);
     const handleTouchEnd = (e) => {
         if (!touchStart) return;

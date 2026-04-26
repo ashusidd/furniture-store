@@ -38,7 +38,7 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
         <nav className="sticky top-0 z-[1000] bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm">
             <div className="max-w-7xl mx-auto px-4 md:px-10 h-20 flex items-center justify-between gap-4">
 
-                {/* 🏷️ LOGO SECTION */}
+                {/*LOGO SECTION */}
                 <Link to="/" className="flex items-center gap-3 shrink-0">
                     <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-600 rounded-xl flex items-center justify-center shadow-lg shadow-orange-100">
                         <span className="text-white font-black text-xl md:text-2xl italic">A</span>
@@ -51,7 +51,7 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
                     </div>
                 </Link>
 
-                {/* 🔍 SEARCH BAR */}
+                {/*SEARCH BAR */}
                 <div className="relative flex-1 max-w-xs md:max-w-md group hidden sm:block">
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-600">🔍</span>
                     <input
@@ -63,7 +63,7 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
                     />
                 </div>
 
-                {/* 🔗 NAVIGATION & ACTIONS */}
+                {/*NAVIGATION & ACTIONS */}
                 <div className="flex items-center gap-4 md:gap-6">
 
                     {/* Home Link */}
@@ -71,7 +71,7 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
                         Home
                     </Link>
 
-                    {/* ✅ ADMIN & USER LINKS FIXED */}
+                    {/*ADMIN & USER LINKS FIXED */}
                     {user && (
                         isAdmin ? (
                             <div className="flex items-center gap-4">
@@ -95,7 +95,7 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
                         )
                     )}
 
-                    {/* 🛒 Cart */}
+                    {/*Cart */}
                     <Link to="/checkout" className="relative text-xl hover:scale-110 transition-transform">
                         🛒 {cart.length > 0 && (
                             <span className="absolute -top-2 -right-2 bg-slate-900 text-white text-[9px] px-1.5 py-0.5 rounded-full font-black">
@@ -104,7 +104,7 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
                         )}
                     </Link>
 
-                    {/* 👤 USER PROFILE & LOGOUT */}
+                    {/*USER PROFILE & LOGOUT */}
                     {user ? (
                         <div className="flex items-center gap-4 border-l pl-4 border-slate-200">
                             <div className="hidden lg:flex flex-col items-end leading-none">

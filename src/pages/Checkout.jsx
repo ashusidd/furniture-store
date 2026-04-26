@@ -15,7 +15,7 @@ export default function Checkout() {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
 
-    // 💾 User ke purane details load karna
+    // User ke purane details load karna
     useEffect(() => {
         if (user?.uid) {
             const savedPhone = localStorage.getItem(`phone_${user.uid}`);
@@ -28,9 +28,9 @@ export default function Checkout() {
     const handleOrder = async (e) => {
         e.preventDefault();
 
-        // 🚨 CHECKPOINT: Agar user logged in nahi hai
+        // CHECKPOINT: Agar user logged in nahi hai
         if (!user) {
-            toast.error("Order confirm karne ke liye pehle Login kariye! 😊");
+            toast.error("Order confirm karne ke liye pehle Login kariye!");
             navigate('/login'); // Seedha login page pe bhej diya
             return;
         }
@@ -64,7 +64,7 @@ export default function Checkout() {
             localStorage.setItem(`address_${user.uid}`, address);
 
             if (clearCart) clearCart();
-            toast.success("Order Placed! 🚀", { id: toastId });
+            toast.success("Order Placed!", { id: toastId });
             navigate('/my-orders');
         } catch (err) {
             toast.error("Order Failed!", { id: toastId });
@@ -73,14 +73,14 @@ export default function Checkout() {
         }
     };
 
-    // 🛒 Empty Cart State
+    // Empty Cart State
     if (cart.length === 0) {
         return (
             <div className="min-h-[70vh] flex flex-col items-center justify-center px-4">
                 <div className="bg-white p-10 md:p-16 rounded-[4rem] shadow-2xl text-center max-w-md w-full border border-slate-100">
                     <div className="text-8xl mb-6 animate-bounce">🛒</div>
                     <h2 className="text-3xl font-black text-slate-900 mb-2 italic uppercase tracking-tighter">Cart Khali Hai</h2>
-                    <p className="text-slate-500 font-bold mb-10">Kuch item toh add karo bhai! 😊</p>
+                    <p className="text-slate-500 font-bold mb-10">Kuch item toh add karo bhai!</p>
                     <Link to="/" className="inline-flex items-center justify-center px-8 py-4 font-black text-white bg-slate-900 rounded-2xl hover:bg-orange-600 shadow-xl transition-all">
                         SHOP NOW 🛍️
                     </Link>
@@ -97,7 +97,7 @@ export default function Checkout() {
 
             <div className="flex flex-col lg:flex-row gap-12 items-start">
 
-                {/* 🛒 SECTION 1: PRODUCT SUMMARY */}
+                {/*SECTION 1: PRODUCT SUMMARY */}
                 <div className="w-full lg:w-5/12 order-1">
                     <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-4 ml-2">Items in your cart</h4>
                     <div className="bg-white border border-slate-100 rounded-[2.5rem] p-4 md:p-6 shadow-xl">
@@ -112,7 +112,7 @@ export default function Checkout() {
                                         <p className="text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-widest">{item.category}</p>
                                         <p className="text-orange-600 font-black text-lg mt-1">₹{Number(item.price).toLocaleString()}</p>
                                     </div>
-                                    <button type="button" onClick={() => { removeFromCart(item.id); toast.success("Item Removed! 🗑️"); }} className="w-10 h-10 bg-red-50 text-red-500 rounded-full flex items-center justify-center transition-all hover:bg-red-500 hover:text-white active:scale-90 flex-shrink-0 shadow-sm">
+                                    <button type="button" onClick={() => { removeFromCart(item.id); toast.success("Item Removed!"); }} className="w-10 h-10 bg-red-50 text-red-500 rounded-full flex items-center justify-center transition-all hover:bg-red-500 hover:text-white active:scale-90 flex-shrink-0 shadow-sm">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                         </svg>
@@ -129,7 +129,7 @@ export default function Checkout() {
                     </div>
                 </div>
 
-                {/* 📋 SECTION 2: SHIPPING FORM */}
+                {/*SECTION 2: SHIPPING FORM */}
                 <div className="w-full lg:w-7/12 order-2">
                     <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-4 ml-2">Shipping Details</h4>
                     <form onSubmit={handleOrder} className="bg-slate-900 p-8 md:p-12 rounded-[3.5rem] shadow-2xl text-white space-y-6">
@@ -169,7 +169,7 @@ export default function Checkout() {
                             type="submit"
                             className="w-full bg-gradient-to-r from-orange-600 to-amber-500 text-white py-6 rounded-[2.5rem] font-black text-2xl hover:shadow-orange-900/20 hover:shadow-2xl transition-all active:scale-95 disabled:opacity-50 uppercase italic"
                         >
-                            {loading ? "PROCESSING..." : user ? "CONFIRM ORDER 🚀" : "LOGIN TO ORDER 🔒"}
+                            {loading ? "PROCESSING..." : user ? "CONFIRM ORDER " : "LOGIN TO ORDER "}
                         </button>
                     </form>
                 </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // ✅ useNavigate add kiya
+import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
 import { doc, getDoc, collection, addDoc, query, where, onSnapshot, serverTimestamp } from 'firebase/firestore';
 import { useAuth } from '../context/AuthContext';
@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 
 export default function ProductView() {
     const { id } = useParams();
-    const navigate = useNavigate(); // ✅ Initialize navigate
+    const navigate = useNavigate();
     const { user } = useAuth();
     const { addToCart } = useCart();
 
@@ -108,7 +108,7 @@ export default function ProductView() {
     return (
         <div className="max-w-7xl mx-auto px-4 py-10 lg:py-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
-                {/* 🖼️ GALLERY SECTION */}
+                {/*GALLERY SECTION */}
                 <div className="space-y-6">
                     <div className="rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white bg-white aspect-square">
                         <img src={selectedMainImage} className="w-full h-full object-cover" alt={product.name} />
@@ -126,7 +126,7 @@ export default function ProductView() {
                     </div>
                 </div>
 
-                {/* 📝 INFO SECTION */}
+                {/*INFO SECTION */}
                 <div className="flex flex-col justify-center space-y-8">
                     <div>
                         <h1 className="text-5xl font-black italic uppercase tracking-tighter leading-none mb-4">{product.name}</h1>
@@ -137,11 +137,11 @@ export default function ProductView() {
                 </div>
             </div>
 
-            {/* ⭐ REVIEWS SECTION */}
+            {/*REVIEWS SECTION */}
             <div className="border-t-2 border-dashed border-slate-200 pt-16">
                 <h2 className="text-3xl font-black mb-10 uppercase italic">Customer Gallery & Feedback</h2>
 
-                {/* ✅ Conditional Rendering based on Login Status */}
+                {/*Conditional Rendering based on Login Status */}
                 {user ? (
                     <form onSubmit={handleReviewSubmit} className="bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-50 mb-16 space-y-6">
                         <div className="flex gap-2">
@@ -188,7 +188,7 @@ export default function ProductView() {
                 </div>
             </div>
 
-            {/* 🔍 MODAL */}
+            {/*MODAL */}
             {modalImage && (
                 <div className="fixed inset-0 bg-black/95 z-[5000] flex items-center justify-center p-4" onClick={() => setModalImage(null)}>
                     <button className="absolute top-10 right-10 text-white text-5xl" onClick={() => setModalImage(null)}>&times;</button>

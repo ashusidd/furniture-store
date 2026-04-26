@@ -30,15 +30,15 @@ export default function App() {
       {/* Page Change par screen ko top pe bhejega */}
       <ScrollToTop />
 
-      {/* Navbar */}
+      {/* Navbar - Isme search state aur function dono ja rahe hain */}
       <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
       <main className="flex-1">
         <Routes>
-          {/* Home Page */}
           <Route path="/" element={
             <Home
               searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
               selectedCategory={selectedCategory}
               setSelectedCategory={setSelectedCategory}
             />
@@ -46,7 +46,7 @@ export default function App() {
 
           <Route path="/login" element={<Auth />} />
 
-          {/* Forgot Password Route (Fix) */}
+          {/* Forgot Password Route */}
           <Route path="/forgot-password" element={<ForgotPassword />} />
 
           <Route path="/checkout" element={<Checkout />} />

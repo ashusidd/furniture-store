@@ -19,8 +19,6 @@ export const CartProvider = ({ children }) => {
     const removeFromCart = (id) => {
         setCart((prev) => prev.filter((item) => item.id !== id));
     };
-
-    // 🔥 Ye function missing tha, isliye white screen aayi
     const clearCart = () => {
         setCart([]);
         localStorage.removeItem("cart");

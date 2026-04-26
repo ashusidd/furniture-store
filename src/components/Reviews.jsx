@@ -7,7 +7,7 @@ export default function Reviews({ productId }) {
     const [reviews, setReviews] = useState([]);
     const [userReview, setUserReview] = useState("");
 
-    // 📝 Reviews Load Karo
+    // Reviews Load Karo
     useEffect(() => {
         const q = query(collection(db, "reviews"), where("productId", "==", productId));
         return onSnapshot(q, (snap) => {
@@ -15,7 +15,7 @@ export default function Reviews({ productId }) {
         });
     }, [productId]);
 
-    // 🚀 Review Submit Karo
+    // Review Submit Karo
     const submitReview = async (e) => {
         e.preventDefault();
         if (!userReview.trim()) return;
@@ -27,7 +27,7 @@ export default function Reviews({ productId }) {
                 createdAt: serverTimestamp()
             });
             setUserReview("");
-            toast.success("Review added! ⭐");
+            toast.success("Review added!");
         } catch (err) {
             toast.error("Review save nahi hua!");
         }
