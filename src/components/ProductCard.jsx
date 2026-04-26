@@ -10,14 +10,19 @@ export default function ProductCard({ item }) {
     const { addToCart } = useCart();
     const navigate = useNavigate();
 
+    // Environment variable for Admin Check
     const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
     const isAdmin = user && user.email === ADMIN_EMAIL;
 
     const handleDelete = async (e) => {
-        e.stopPropagation();
-        if (window.confirm("Bhai, delete kar dein?")) {
-            await deleteDoc(doc(db, "furniture", item.id));
-            toast.success("Deleted!");
+        e.stopPropagation(); // Card click event ko rokne ke liye
+        if (window.confirm("Bhai, kya sach mein delete kar dein?")) {
+            try {
+                await deleteDoc(doc(db, "furniture", item.id));
+                toast.success("Product Deleted! 🗑️");
+            } catch (err) {
+                toast.error("Delete nahi ho paya!");
+            }
         }
     };
 
@@ -28,7 +33,7 @@ export default function ProductCard({ item }) {
             onClick={() => navigate(`/product/${item.id}`)}
             className="bg-white p-2 md:p-5 rounded-[1.5rem] md:rounded-[3rem] shadow-sm border border-slate-100 group hover:shadow-2xl transition-all cursor-pointer relative overflow-hidden flex flex-col w-full h-full"
         >
-            {/* 🖼️ Image Container - W-Full ensure karta hai gap na rahe */}
+            {/* 🖼️ Image Container */}
             <div className="w-full h-44 md:h-72 overflow-hidden rounded-[1.2rem] md:rounded-[2.5rem] mb-3 relative bg-slate-50">
                 <img
                     src={displayImage}
@@ -36,11 +41,25 @@ export default function ProductCard({ item }) {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
 
-                {/* Admin Controls */}
+                {/* ✅ FIXED: Admin Controls (Hamesha dikhenge, Mobile friendly) */}
                 {isAdmin && (
-                    <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity z-20">
-                        <button onClick={(e) => { e.stopPropagation(); navigate('/admin', { state: { product: item } }); }} className="bg-white p-1.5 rounded-full text-blue-500 shadow-md">✏️</button>
-                        <button onClick={handleDelete} className="bg-white p-1.5 rounded-full text-red-500 shadow-md">🗑️</button>
+                    <div className="absolute top-2 right-2 flex gap-2 z-20">
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                navigate('/admin', { state: { product: item } });
+                            }}
+                            className="bg-white/95 backdrop-blur-sm p-2 md:p-2.5 rounded-full text-blue-600 shadow-xl border border-blue-100 active:scale-90 transition-all"
+                        >
+                            <span className="text-sm md:text-base">✏️</span>
+                        </button>
+
+                        <button
+                            onClick={handleDelete}
+                            className="bg-white/95 backdrop-blur-sm p-2 md:p-2.5 rounded-full text-red-600 shadow-xl border border-red-100 active:scale-90 transition-all"
+                        >
+                            <span className="text-sm md:text-base">🗑️</span>
+                        </button>
                     </div>
                 )}
             </div>
