@@ -3,21 +3,28 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: 'auto',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        cleanupOutdatedCaches: true,
+      },
+      devOptions: {
+        enabled: true
+      },
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
         name: 'Ashraf Woods Furniture',
         short_name: 'AshrafWoods',
         description: 'Premium Furniture Store by Ashraf Ali',
-        theme_color: '#ea580c', // Orange theme
-        background_color: '#FDFBF7', // Website background color
-        display: 'standalone', // Isse app jaisi feeling aayegi (no browser URL bar)
+        theme_color: '#ea580c',
+        background_color: '#FDFBF7',
+        display: 'standalone',
         orientation: 'portrait',
         icons: [
           {
